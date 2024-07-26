@@ -1,0 +1,25 @@
+.footer {
+    padding: calc($separacion / 2) 0;
+
+    background-color: $grisOscuro;
+
+    .contenido-footer {
+        padding-top: calc($separacion / 2);
+    }
+
+    a {
+        color: $blanco;
+        text-decoration: none;
+        padding: .5rem;
+        &:hover {
+            color: $verde;
+        }
+    }
+    
+
+    .copyright {
+        color: $blanco;
+        text-align: center;
+        font-size: 1.7rem;
+    }
+}
