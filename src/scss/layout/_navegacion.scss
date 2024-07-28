@@ -3,6 +3,7 @@
     flex-direction: column;
 
     padding-top: 3rem;
+    padding-bottom: 3rem;
 
     @include tablet {
         flex-direction: row;

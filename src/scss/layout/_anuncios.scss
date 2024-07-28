@@ -2,9 +2,75 @@
     .contenedor-anuncios {
         @include grid(3,2rem);
     }
+
 }
 
+
 .anuncio {
-    background-color: lighten($gris, 8);
-    border-radius: 3rem;
+    margin-top: 1.5rem;
+    background-color: lighten($gris, 5);
+    border: 1px solid darken($gris, 10);
+    border-radius: 1.5rem; // Añadir border-radius
+    overflow: hidden; // Asegurarse de que el contenido no se desborde
+    display: flex;
+    flex-direction: column;
+    height: 100%; // Asegurar que todas las tarjetas tengan la misma altura
+
+    .contenido-anuncio {
+        padding: 2rem;
+        flex: 1; // Asegurar que el contenido ocupe el espacio disponible
+    }
+
+    h3 {
+        line-height: 1.4; // Ajusta este valor según tus necesidades
+        margin: 0 0 1rem 0;
+        font-weight: $bold;
+        font-size: 2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; // Limitar a 2 líneas
+        -webkit-box-orient: vertical;
+    }
+
+    p {
+        font-weight: 100;
+    }
+
+
+
+    img {
+        border-top-left-radius: 1.5rem; // Añadir border-radius solo a las esquinas superiores
+        border-top-right-radius: 1.5rem;
+        width: 100%; // Asegurarse de que la imagen no se desborde
+        height: auto;
+    }
+}
+
+.precio {
+    color: $verde;
+    font-weight: $bold;
+    font-size: 2.5rem;
+}
+
+.iconos-caracteristicas {
+    display: flex;
+    list-style: none;
+    padding: 0rem;
+    
+
+    li {
+        flex: 1;
+        display: flex;
+
+        img {
+            flex: 0 0 3rem;
+            margin-right: 1rem;
+            
+        }
+
+        p {
+            font-weight: $black;
+        }
+    }
 }
