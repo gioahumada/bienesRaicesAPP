@@ -4,6 +4,7 @@
 @import 'base/globales';
 @import 'base/utilidades';
 @import 'base/botones';
+@import 'base/darkMode';
 
 /* UI INDEX */
 
@@ -19,3 +20,7 @@
 /* UI NOSOTROS */
 
 @import 'layout/nosotros';
+
+/* UI Formulario */
+
+@import 'layout/formulario';
