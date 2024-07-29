@@ -14,6 +14,14 @@ function eventListeners() {
 function darkmode() {
     const botonDarkmode = document.querySelector('.dark-mode-boton');
 
+    const prefiereDarkmode = window.matchMedia('(prefers-color-scheme: dark)');
+
+    if(prefiereDarkmode.matches) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+
     botonDarkmode.addEventListener('click', function() {
         document.body.classList.toggle('dark-mode');
     });
