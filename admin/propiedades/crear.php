@@ -65,10 +65,15 @@
             $errores[] = "Debes añadir un vendedor";
         }
 
-        $medida = 1000 * 100;
+        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+            $imagen = $_FILES['imagen'];
+            $medida = 10 * 1024 * 1024; // 10MB
 
-        if($imagen['size'] > $medida || $imagen['error']) {
-            $errores[] = "La imagen es muy pesada (MAXIMO 1MB)";
+            if($imagen['size'] > $medida) {
+                $errores[] = "La imagen es muy pesada (MAXIMO 10MB)";
+            }
+        } else {
+            $errores[] = "Error al subir la imagen.";
         }
 
         /* echo "<pre>";
@@ -79,25 +84,25 @@
             $errores[] = "El precio debe ser un número positivo.";
         }
 
-        if(empty($errores)) {
-            
+        if (empty($errores)) {
             // Subida de archivos
             $carpetaImagenes = '../../imagenes/';
-
-            if(!is_dir($carpetaImagenes)) {
+        
+            if (!is_dir($carpetaImagenes)) {
                 mkdir($carpetaImagenes);
             }
-
-            move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $imagen['name']);
-            
-            $querry = "INSERT INTO propiedades (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedorId) VALUES ('$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedorId')";
-
-            $resultado = mysqli_query($db, $querry);
-
+        
+            $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
+        
+            move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
+        
+            $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedorId) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedorId')";
+        
+            $resultado = mysqli_query($db, $query);
+        
             if ($resultado) {
-                header('Location: /admin?resultado=1');
+                header('Location: /admin?mensaje=Registrado&action=crear');
             }
-
         }
 
 

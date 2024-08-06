@@ -12,4 +12,34 @@
         border: 1px solid darken($rojo, 50%);
         border-radius: 1rem;
     }
+
+    &.exito {
+        background-color: $verde;
+        border: 1px solid darken($verde, 50%);
+        border-radius: 1rem;
+    }
 }
+
+table.propiedades {
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+
+    thead {
+        background-color: $verde;
+
+        th {
+            color: $blanco;
+            padding: 2rem;
+        }
+    }
+
+    .imagen-tabla {
+        width: 10rem;
+    }
+
+    
+
+}
+
+
